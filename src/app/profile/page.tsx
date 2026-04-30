@@ -5,6 +5,7 @@ import { Container } from '@/components/layout/Container'
 import { Divider } from '@/components/ui/Divider'
 import { LogoutButton } from './_components/LogoutButton'
 
+export const dynamic = 'force-dynamic'
 export default async function ProfilePage() {
   const supabase = await createServerClient()
 
