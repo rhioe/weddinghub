@@ -13,6 +13,8 @@ const FEATURED_VENDORS = [
     total_reviews: 12,
     whatsapp: '081234567890',
     image_url: null,
+    featured: true,
+    is_new: false,
   },
   {
     id: '2',
@@ -24,6 +26,8 @@ const FEATURED_VENDORS = [
     total_reviews: 8,
     whatsapp: '081234567891',
     image_url: null,
+    featured: true,
+    is_new: false,
   },
   {
     id: '3',
@@ -35,6 +39,8 @@ const FEATURED_VENDORS = [
     total_reviews: 20,
     whatsapp: '081234567892',
     image_url: null,
+    featured: true,
+    is_new: false,
   },
 ]
 

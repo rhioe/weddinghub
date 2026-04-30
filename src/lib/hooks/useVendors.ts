@@ -8,11 +8,12 @@ interface VendorData {
   business_name: string
   slug: string
   city: string
-  category?: string
+  category: string
   avg_rating: number
   total_reviews: number
   image_url?: string | null
   featured: boolean
+  is_new: boolean
 }
 
 interface UseVendorsParams {

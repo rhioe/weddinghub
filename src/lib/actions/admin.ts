@@ -77,7 +77,7 @@ export async function createVendorInvitation(data: {
       city: data.city || null,
       invite_code: inviteCode,
       created_by: user.id,
-    })
+    } as any)
 
   if (error) {
     return { error: error.message }

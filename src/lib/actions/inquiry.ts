@@ -27,7 +27,7 @@ export async function createInquiry(formData: FormData) {
   // Validasi
   const validated = inquirySchema.safeParse(data)
   if (!validated.success) {
-    return { error: validated.error.errors[0].message }
+    return { error: validated.error.issues[0].message }
   }
 
   // Cek apakah sudah pernah inquiry ke vendor yang sama (yang masih aktif)

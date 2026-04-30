@@ -13,6 +13,8 @@ const NEW_VENDORS = [
     total_reviews: 0,
     whatsapp: '081234567893',
     image_url: null,
+    featured: false,
+    is_new: true,
   },
   {
     id: '5',
@@ -24,6 +26,8 @@ const NEW_VENDORS = [
     total_reviews: 0,
     whatsapp: '081234567894',
     image_url: null,
+    featured: false,
+    is_new: true,
   },
 ]
 

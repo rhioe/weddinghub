@@ -12,8 +12,8 @@ interface VendorCardData {
   avg_rating: number
   total_reviews: number
   image_url?: string | null
-  featured?: boolean
-  is_new?: boolean
+  featured: boolean
+  is_new: boolean
 }
 
 interface VendorCardProps {

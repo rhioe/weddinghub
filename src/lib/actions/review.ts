@@ -24,7 +24,7 @@ export async function createReview(formData: FormData) {
 
   const validated = reviewSchema.safeParse(data)
   if (!validated.success) {
-    return { error: validated.error.errors[0].message }
+    return { error: validated.error.issues[0].message }
   }
 
   // Cek apakah inquiry ini deal/done
