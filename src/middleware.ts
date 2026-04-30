@@ -66,15 +66,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // Admin routes - cek role
-  if (user && pathname.startsWith('/admin')) {
-    const { data: userData } = await supabase
-      .from('users')
-      .select('role')
-      .eq('id', user.id)
-      .single()
 
-    if (userData?.role !== 'admin') {
+  // Admin routes - cek role  
+  if (user && pathname.startsWith('/admin')) {
+    // Gunakan raw query untuk bypass RLS
+    const { data: userData } = await supabase
+      .rpc('get_user_role', { user_id: user.id })
+
+    if (!userData || userData !== 'admin') {
       const url = request.nextUrl.clone()
       url.pathname = '/'
       return NextResponse.redirect(url)
