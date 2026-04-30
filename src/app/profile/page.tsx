@@ -3,6 +3,7 @@ import { createServerClient } from '@/lib/supabase/server'
 import { Avatar } from '@/components/ui/Avatar'
 import { Container } from '@/components/layout/Container'
 import { Divider } from '@/components/ui/Divider'
+import { LogoutButton } from './_components/LogoutButton'
 
 export default async function ProfilePage() {
   const supabase = await createServerClient()
@@ -12,7 +13,7 @@ export default async function ProfilePage() {
   } = await supabase.auth.getUser()
 
   if (!user) {
-    return null // Middleware handle redirect
+    return null
   }
 
   const { data: profile } = await supabase
@@ -71,7 +72,7 @@ export default async function ProfilePage() {
           </h1>
           <p className="text-sm text-neutral-500">{user.email}</p>
           <span className="inline-block mt-1 text-xs font-medium px-2 py-0.5 rounded-full bg-primary-50 text-primary-600">
-            {profile?.role === 'vendor' ? 'Vendor' : 'Customer'}
+            {profile?.role === 'admin' ? 'Admin' : profile?.role === 'vendor' ? 'Vendor' : 'Customer'}
           </span>
         </div>
       </div>
@@ -98,6 +99,21 @@ export default async function ProfilePage() {
         ))}
       </div>
 
+      {/* Admin menu */}
+      {profile?.role === 'admin' && (
+        <>
+          <Divider className="my-4" />
+          <Link
+            href="/admin"
+            className="flex items-center gap-3 px-3 py-3 rounded-md bg-accent-50 text-accent-700 font-semibold hover:bg-accent-100 transition-colors"
+          >
+            <span className="text-xl">⚙️</span>
+            <span className="flex-1">Admin Panel</span>
+            <span className="text-accent-400">›</span>
+          </Link>
+        </>
+      )}
+
       {/* Switch to vendor */}
       {profile?.role === 'customer' && (
         <div className="mt-6">
@@ -109,6 +125,10 @@ export default async function ProfilePage() {
           </Link>
         </div>
       )}
+
+      {/* Logout */}
+      <Divider className="my-6" />
+      <LogoutButton />
     </Container>
   )
 }
